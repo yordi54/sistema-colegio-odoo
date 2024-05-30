@@ -4,6 +4,10 @@
 USUARIO: mariscal
 contraseña: Colegio_Mariscal1234
 
+- ejemplo en powershell
+$ ssh mariscal@4.236.160.180
+la contraseña es la de arriba
+
 -------------------------------------------------
 
 #### COMANDOS PARA CONFIGURAR EL SERVIDOR VM AZURE ####
@@ -55,9 +59,30 @@ contraseña: Colegio_Mariscal1234
 
 -------------------------------------------------------------
 ----------------- CLONAR REPOSITORIO------------------------
+
     - mkdir proyectos
     - cd proyectos
     - git clone https://github.com/yordi54/sistema-colegio-odoo.git
     - ls
     - cd cd sistema-colegio-odoo/
+    - sudo docker-compose up -d
+
 -----------------------------------------------------------
+---------------- CONFIGURAR MANUAL EN AZURE  WEB --------------
+
+    - configuracion de redes : crear un acl para permitir el puerto 8069
+
+--------------------------------------------------------------
+
+---------------- CONFIGURACION DE ODOO -------------------------
+    - master-password: g7pj-v27x-zqip
+    - email: admin@gmail.com
+    - password: admin1234
+    - bueno, solo buscan los modulos personalizados y los activan, (parece que no es necesario estar en modo desarrollador)
+----------------------------------------------------------------
+
+INGRESA A LA URL : http://colegio-mariscal.eastus.cloudapp.azure.com:8069/web/login
+
+
+
+FIN !!!!!!!!!!!!!!
