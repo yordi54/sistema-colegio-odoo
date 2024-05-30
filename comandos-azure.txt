@@ -58,6 +58,7 @@ la contraseña es la de arriba
     - git config --list
 
 -------------------------------------------------------------
+
 ----------------- CLONAR REPOSITORIO------------------------
 
     - mkdir proyectos
@@ -68,6 +69,7 @@ la contraseña es la de arriba
     - sudo docker-compose up -d
 
 -----------------------------------------------------------
+
 ---------------- CONFIGURAR MANUAL EN AZURE  WEB --------------
 
     - configuracion de redes : crear un acl para permitir el puerto 8069
@@ -81,8 +83,45 @@ la contraseña es la de arriba
     - bueno, solo buscan los modulos personalizados y los activan, (parece que no es necesario estar en modo desarrollador)
 ----------------------------------------------------------------
 
-INGRESA A LA URL : http://colegio-mariscal.eastus.cloudapp.azure.com:8069/web/login
+------------------------CONFIGURACION DE DOMINIO (DNS)----------------------
 
+    - sudo apt update
+    - sudo apt install nginx
+    - sudo nano /etc/nginx/sites-available/odoo.conf  ##CREAR UN ARCHIVO odoo.conf y copiar el siguiente codigo
+    - codigo :
 
+        server {
+            listen       80;
+            listen       [::]:80;
+            server_name  your_domain_here;
+
+            access_log  /var/log/nginx/odoo.access.log;
+            error_log   /var/log/nginx/odoo.error.log;
+
+            location / {
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-Host $host;
+            proxy_set_header X-Forwarded-Proto https;
+            proxy_pass http://localhost:8069;
+            }
+        }
+
+    - sudo ln -s /etc/nginx/sites-available/odoo.conf /etc/nginx/sites-enabled/
+    - sudo nginx -t
+    - sudo systemctl restart nginx
+
+--------------------------------------------------------------------------------
+
+---------------------------CONFIGURACION CERTIFICADOS (HTTPS) -----------------------
+
+    - sudo apt update
+    - sudo apt install certbot python3-certbot-nginx
+    - sudo certbot --nginx -d colegio-mariscal.eastus.cloudapp.azure.com
+    - sudo certbot renew --dry-run (VERIFICAR QUE HAYA TAREA PARA RENOVAR LOS CERTIFICADOS)
+
+---------------------------------------------------------------------------------------
+
+URL : https://colegio-mariscal.eastus.cloudapp.azure.com
 
 FIN !!!!!!!!!!!!!!
