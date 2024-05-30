@@ -1,0 +1,63 @@
+#### INGRESO AL SERVIDOR VIRTUAL MACHINE AZURE ####
+-------- MEDIANTE SSH PUERTO 22 ------------------
+
+USUARIO: mariscal
+contraseña: Colegio_Mariscal1234
+
+-------------------------------------------------
+
+#### COMANDOS PARA CONFIGURAR EL SERVIDOR VM AZURE ####
+
+------------------ACTUALIZAR -------------------------
+
+- sudo apt update
+- sudo apt upgrade -y
+
+------------------------------------------------------
+
+------- INSTALAR DOCKER Y DOCKER COMPOSE -------------
+- INSTALAR DOCKER
+    - sudo apt install apt-transport-https ca-certificates curl software-properties-common
+    - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    - echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    - sudo apt update
+    - sudo apt install -y docker-ce docker-ce-cli containerd.io
+    - docker --version
+    - sudo systemctl enable docker
+    - sudo systemctl start docker
+    - sudo docker run hello-world
+    - docker ps -a
+- INSTALAR DOCKER COMPOSE
+    - sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    - sudo chmod +x /usr/local/bin/docker-compose
+    - docker-compose --version
+    # si hay un error de : mariscal@vm-mariscal:~$ docker-compose --version "ERROR" : bash: /usr/bin/docker-compose: No such file or directory
+    - sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+------------------------------------------------------
+
+------------------  INSTALAR GIT ---------------------
+    - sudo apt update
+    - sudo apt install software-properties-common (YA ESTA INSTALADO)
+    - sudo add-apt-repository ppa:git-core/ppa
+    - sudo apt update
+    - sudo apt install git
+    - git --version
+------------------------------------------------------
+
+##############################################################
+
+######## CLONAR REPOSITORIO Y CORRER ODDO #####################
+------------------ REGISTRAR CUENTA GITHUB -------------------
+
+    - git config --global user.name "Tu Nombre"
+    - git config --global user.email "tu_correo@example.com"
+    - git config --list
+
+-------------------------------------------------------------
+----------------- CLONAR REPOSITORIO------------------------
+    - mkdir proyectos
+    - cd proyectos
+    - git clone https://github.com/yordi54/sistema-colegio-odoo.git
+    - ls
+    - cd cd sistema-colegio-odoo/
+-----------------------------------------------------------
