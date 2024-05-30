@@ -16,6 +16,7 @@ services:
       - odoo-data:/var/lib/odoo
       - ./config_odoo:/etc/odoo
       - ./dev_addons:/mnt/extra-addons
+      - ./log:/var/log/odoo
 
   db:
     image: postgres:14.0
