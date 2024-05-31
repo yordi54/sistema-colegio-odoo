@@ -1,0 +1,18 @@
+##### COMANDOS PARA CREAR RAMA #######
+1.- ESTAR EN LA RAMA PRINCIPAL "main", COMANDO: git branch (debe estar en verde, así * main)
+3.- hacer siempre un git pull, para traerse los ultimos cambios antes de crear una nueva RAMA
+4.- crear una rama , COMANDO:  git branch nombre_rama  (poner un nombre referente ala funcionalidad que va realizar)
+5.- ahora cambie a la rama que creo, COMANDO: git checkout nombre_rama
+6.- ahora si puede trabajar sobre esa rama su funcionalidad asignada (siempre debe fijarse que este trabajando sobre su rama, ver paso 1 para saber en que rama esta)
+7.- si ya termino su funcionalidad, fijese que este en su rama y realize los siguientes COMANDOS:
+    - git add ./dev_addons
+    - git commit -m "algun mensaje relacionado a su funcionalidad" 
+    - git push
+    - copia el comando que le dice que ejecute "git push --set ......."
+    - va ha su repositorio, crea el pull request y asigna a una persona para que lo revise
+
+8.- va ser este mismo proceso cada vez que quiera añadir nuevas funcionalidades (cada funcionalidad sera una rama)
+
+### COMANDO PARA ELIMMINAR UNA RAMA #####
+    - git branch -d nombre_rama
+    esto solo si quiere eliminar una rama que creo por error
