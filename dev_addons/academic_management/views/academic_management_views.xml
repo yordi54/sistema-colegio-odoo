@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <menuitem name="Gestion Academica" id="academic_management.menu_root" />
+        <menuitem name="Gestion Personal Academico" id="academic_management.personnel_management"
+            parent="academic_management.menu_root" />
+            <menuitem name="Colegios" id="academic_management.schools"
+                parent="academic_management.personnel_management"
+                action="academic_management.action_schools" />
+            <menuitem name="Tipos de Empleos " id="academic_management.job_type_academic"
+                parent="academic_management.personnel_management"
+                action="academic_management.action_job_type_academic" />
+            <menuitem name="Empleados" id="academic_management.employee_academic"
+                parent="academic_management.personnel_management"
+                action="academic_management.action_employee_academic" />
+            
+            <menuitem name="Departamento Empleados" id="academic_management.department_academic"
+                parent="academic_management.personnel_management"
+                action="academic_management.action_department_academic" />
+
+        <menuitem name="Gestion Alumnos" id="academic_management.student_management"
+            parent="academic_management.menu_root" />
+            <menuitem name="Alumnos" id="academic_management.students"
+                parent="academic_management.student_management"
+                action="academic_management.action_student" />
+                
+    </data>
+</odoo>

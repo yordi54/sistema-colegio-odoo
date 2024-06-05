@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="academic_management_student_tree" model="ir.ui.view">
+            <field name="name">student.tree</field>
+            <field name="model">student</field>
+            <field name="arch" type="xml">
+                <tree string="Students">
+                    <field name="rude"/>
+                    <field name="photo" widget="image" options='{"size": [50, 50]}' />
+                    <field name="name" />
+                    <field name="lastname"/>
+                    <field name="ci"/>
+                    <field name="address"/>
+                    <field name="gender"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="academic_management_student_form" model="ir.ui.view">
+            <field name="name">student.form</field>
+            <field name="model">student</field>
+            <field name="arch" type="xml">
+                <form string="Students">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="rude"/>
+                                <field name="photo" widget="image" options='{"size": [50, 50]}' />
+                                <field name="name" />
+                                <field name="lastname"/>
+                                <field name="ci"/>
+                                <field name="address"/>
+                                
+                            </group>
+                            <group>
+                                <field name="birthdate"/>
+                                <field name="phone"/>
+                                <field name="email"/>
+                                <field name="gender"/>
+                                <field name="state"/>
+                                <field name="user_id"/>
+                            
+                            </group>
+                        </group>
+                    
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="academic_management.action_student" model="ir.actions.act_window">
+            <field name="name">Alumno</field>
+            <field name="res_model">student</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+                        
+    </data>
+</odoo>
