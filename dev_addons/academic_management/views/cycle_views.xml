@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="academic_management_cycle_tree" model="ir.ui.view">
+            <field name="name">cycle.tree</field>
+            <field name="model">cycle</field>
+            <field name="arch" type="xml">
+                <tree string="Cycles">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="duration"/>
+                    <field name="state"/>
+                    <field name="company_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="academic_management_cycle_form" model="ir.ui.view">
+            <field name="name">cycle.form</field>
+            <field name="model">cycle</field>
+            <field name="arch" type="xml">
+                <form string="Cycles">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="duration"/>
+                            <field name="state"/>
+                            <field name="company_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="academic_management.action_cycle" model="ir.actions.act_window">
+            <field name="name">Ciclo</field>
+            <field name="res_model">cycle</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+          
+    </data>
+</odoo>

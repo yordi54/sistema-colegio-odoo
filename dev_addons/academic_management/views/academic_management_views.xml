@@ -24,6 +24,15 @@
             <menuitem name="Alumnos" id="academic_management.students"
                 parent="academic_management.student_management"
                 action="academic_management.action_student" />
+
+        <menuitem name="Gestion de Ciclos y Paralelos" id="academic_management.cycle_parallel_management"
+            parent="academic_management.menu_root" />
+            <menuitem name="Ciclos" id="academic_management.cycles"
+                parent="academic_management.cycle_parallel_management"
+                action="academic_management.action_cycle" />
+            <menuitem name="Paralelos" id="academic_management.parallels"
+                parent="academic_management.cycle_parallel_management"
+                action="academic_management.action_parallel" />  
                 
     </data>
 </odoo>
