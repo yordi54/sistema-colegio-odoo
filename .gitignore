@@ -1,5 +1,6 @@
 # ignorar archivo config_odoo
 ./config_odoo
+./log
 # ignorar archivo comandos-azure.txt y docker-compose.yaml
 comandos-azure.txt
 docker-compose.yaml

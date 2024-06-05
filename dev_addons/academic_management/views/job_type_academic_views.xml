@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <data>
+        <!-- Vista de Árbol heredada y personalizada para Tipos de Empleo Académico -->
+        <record id="academic_management_job_type_academic_tree" model="ir.ui.view">
+            <field name="name">hr.job.tree.inherit.job.type.academic</field>
+            <field name="model">hr.job</field>
+            <field name="inherit_id" ref="hr.view_hr_job_tree" />
+            <field name="arch" type="xml">
+                <!-- Modificaciones en la vista de árbol -->
+                <!-- Por ejemplo, ocultar el campo 'address' -->
+                <xpath expr="//field[@name='department_id']" position="after">
+                    <field name="active" string="Estado" />
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Vista de Formulario heredada y personalizada para Tipos de Empleo Académico -->
+        <record id="academic_management_job_type_academic_form_view" model="ir.ui.view">
+            <field name="name">hr.job.form.inherit.job.type.academic</field>
+            <field name="model">hr.job</field>
+            <field name="inherit_id" ref="hr.view_hr_job_form"/>
+            <field name="arch" type="xml">
+                <!-- Modificaciones en la vista de formulario -->
+                <!-- Por ejemplo, agregar un campo nuevo 'is_academic' -->
+                
+                <xpath expr="//page[@name='job_description_page']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+            </field>
+        </record>
+
+        <!-- Acción de ventana para Tipos de Empleo Académico -->
+        <record id="academic_management.action_job_type_academic" model="ir.actions.act_window">
+            <field name="name">Tipo de Trabajo</field>
+            <field name="res_model">hr.job</field>
+            <field name="view_mode">tree,form</field>
+
+        </record>
+    </data>
+</odoo>

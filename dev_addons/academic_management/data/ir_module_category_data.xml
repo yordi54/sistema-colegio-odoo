@@ -1,0 +1,9 @@
+<odoo>
+    <data noupdate="1">
+        <record id="module_category_education" model="ir.module.category">
+            <field name="name">Educación</field>
+            <field name="description">Módulos relacionados con la gestión educativa</field>
+            <field name="sequence">10</field>
+        </record>
+    </data>
+</odoo>

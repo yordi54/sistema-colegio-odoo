@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <data>
+        <!-- Vista de Árbol heredada y personalizada para Empleados Académicos -->
+        <record id="academic_management_employee_academic_tree" model="ir.ui.view">
+            <field name="name">hr.employee.tree.inherit.employee.academic</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_tree" />
+            <field name="arch" type="xml">
+                <!-- Modificaciones en la vista de árbol -->
+                <!-- Por ejemplo, ocultar el campo 'address' -->
+                <xpath expr="//field[@name='work_phone']" position="attributes">
+                    <attribute name="column_invisible">1</attribute>
+                </xpath>
+           
+              
+
+
+            </field>
+        </record>
+
+        <!-- Vista de Formulario heredada y personalizada para Empleados Académicos -->
+        <record id="academic_management_employee_academic_form_view" model="ir.ui.view">
+            <field name="name">hr.employee.form.inherit.employee.academic</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form" />
+            <field name="arch" type="xml">
+                <!-- Modificaciones en la vista de formulario -->
+                <!-- Por ejemplo, agregar un campo nuevo 'is_academic' -->
+                <xpath expr="//field[@name='coach_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+            </field>
+        </record>
+
+        <!-- Acción de ventana para Empleados Académicos -->
+        <record id="academic_management.action_employee_academic" model="ir.actions.act_window">
+            <field name="name">Empleados</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('job_id', '!=', False)]</field>
+
+        </record>
+
+       
+        
+    </data>
+</odoo>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+
+    <data>
+        <!-- Vista de Árbol heredada y personalizada para Colegios -->
+        <record id="academic_management_schools_tree" model="ir.ui.view">
+            <field name="name">res.company.tree.inherit.school</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_tree" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="string">Nombre del Colegio</attribute>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="logo_web" string="Logo" widget="image" options='{"size": [50, 50]}' />
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="column_invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='child_ids']" position="attributes">
+                    <attribute name="column_invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="vat" string="NIT" />
+                </xpath>
+
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field name="street" string="Dirección" />
+                </xpath>
+                <xpath expr="//field[@name='street']" position="after">
+                    <field name="phone" string="Teléfono" />
+                </xpath>
+
+
+            </field>
+        </record>
+
+        <!-- Vista de Formulario heredada y personalizada para Colegios -->
+        <record id="academic_management_schools_form" model="ir.ui.view">
+            <field name="name">res.company.form.inherit.school</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='phone']" position="after">
+                    <field name="is_school" widget="form.field_checkbox" />
+                </xpath>
+                <xpath expr="//page[@name='branches']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="string">Nombre del Colegio</attribute>
+                    <attribute name="placeholder">Nombre del Colegio</attribute>
+                </xpath>
+                <xpath expr="//field[@name='parent_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='bounce_formatted']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='catchall_formatted']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='default_from_email']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Acción de ventana para Colegios -->
+        <record id="academic_management.action_schools" model="ir.actions.act_window">
+            <field name="name">Colegios</field>
+            <field name="res_model">res.company</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+    </data>
+</odoo>
