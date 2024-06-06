@@ -32,7 +32,16 @@
                 action="academic_management.action_cycle" />
             <menuitem name="Paralelos" id="academic_management.parallels"
                 parent="academic_management.cycle_parallel_management"
-                action="academic_management.action_parallel" />  
+                action="academic_management.action_parallel" /> 
+
+        <menuitem name="Gestion de Cursos y Materias" id="academic_management.grade_subject_management"
+            parent="academic_management.menu_root" />
+            <menuitem name="Cursos" id="academic_management.grades"
+                parent="academic_management.grade_subject_management"
+                action="academic_management.action_grade" />
+            <menuitem name="Materias" id="academic_management.subjects"
+                parent="academic_management.grade_subject_management"
+                action="academic_management.action_subject" />   
                 
     </data>
 </odoo>

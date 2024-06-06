@@ -11,3 +11,5 @@ class Cycle(models.Model):
 
     # Relacion con la tabla de colegio
     company_id = fields.Many2one('res.company', string="Colegio", required=True)
+    # Relacion con la tabla grade
+    grade_ids = fields.One2many('grade', 'cycle_id', string='Cursos')

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="academic_management_grade_tree" model="ir.ui.view">
+            <field name="name">grade.tree</field>
+            <field name="model">grade</field>
+            <field name="arch" type="xml">
+                <tree string="Grades">
+                    <field name="name"/>
+                    <field name="parallel_id"/>
+                    <field name="cycle_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="academic_management_grade_form" model="ir.ui.view">
+            <field name="name">grade.form</field>
+            <field name="model">grade</field>
+            <field name="arch" type="xml">
+                <form string="Grades">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="parallel_id"/>
+                            <field name="cycle_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="academic_management.action_grade" model="ir.actions.act_window">
+            <field name="name">Curso</field>
+            <field name="res_model">grade</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+          
+    </data>
+</odoo>
