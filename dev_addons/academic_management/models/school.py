@@ -5,3 +5,6 @@ class School(models.Model):
 
     # Añadimos un campo nuevo, is school
     is_school = fields.Boolean(string="Es escuela", default=True)
+
+    # Relacion con la tabla cycles
+    cycle_ids = fields.One2many('cycle', 'company_id', string='Ciclos')

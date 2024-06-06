@@ -3,3 +3,7 @@ access_res_company_school,access_res_company_school,model_res_company,base.group
 access_student,access_student,model_student,base.group_user,1,1,1,1
 access_management,access_management,model_management,base.group_user,1,1,1,1
 access_period,access_period,model_period,base.group_user,1,1,1,1
+access_cycle,access_cycle,model_cycle,base.group_user,1,1,1,1
+access_parallel,access_parallel,model_parallel,base.group_user,1,1,1,1
+access_subject,access_subject,model_subject,base.group_user,1,1,1,1
+access_grade,access_grade,model_grade,base.group_user,1,1,1,1
