@@ -11,3 +11,6 @@ from . import employee_academic
 from . import student
 from . import cycle
 from . import parallel
+from . import subject
+from . import grade
+

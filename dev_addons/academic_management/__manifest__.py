@@ -27,7 +27,8 @@
         'views/student_views.xml',
         'views/cycle_views.xml',
         'views/parallel_views.xml',
-
+        'views/grade_views.xml',
+        'views/subject_views.xml',
             
 
         'views/academic_management_views.xml',
