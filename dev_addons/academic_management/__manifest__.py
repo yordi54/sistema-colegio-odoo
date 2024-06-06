@@ -25,11 +25,19 @@
         'views/employee_academic_views.xml',
         'views/department_academic_views.xml',
         'views/student_views.xml',
+        'views/management_views.xml',
+        'views/period_views.xml',
         'views/academic_management_views.xml',
         'data/ir_module_category_data.xml',
     ],
 
     #actions button
+    'qweb': {
+        #css personalizado a mi proyecto web.assets
+        'web.assets_backend': [
+            'my_addon/static/src/js/**/*',
+        ],
+    },
 
     
   
