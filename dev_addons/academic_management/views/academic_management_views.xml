@@ -43,5 +43,16 @@
                 parent="academic_management.grade_subject_management"
                 action="academic_management.action_subject" />   
                 
+
+
+        <menuitem name="Gestion de Año y Periodo" id="academic_management.management_management" 
+            parent="academic_management.menu_root"/>
+            <menuitem name="Año Academico" id="academic_management.management"
+                parent="academic_management.management_management"
+                action="academic_management.action_management" />
+|            <menuitem name="Periodo" id="academic_management.periods"
+                parent="academic_management.management_management"
+                action="academic_management.action_periods" />
+                
     </data>
 </odoo>
