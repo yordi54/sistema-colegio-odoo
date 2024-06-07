@@ -28,6 +28,11 @@
                             <field name="state"/>
                             <field name="company_id"/>
                         </group>
+                        <notebook>
+                            <page string = "Cursos" name="grade">
+                                <field name="grade_ids"></field>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
