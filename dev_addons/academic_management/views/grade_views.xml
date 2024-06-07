@@ -7,8 +7,8 @@
             <field name="arch" type="xml">
                 <tree string="Grades">
                     <field name="name"/>
-                    <field name="parallel_id"/>
                     <field name="cycle_id"/>
+                    <field name="parallel_id"/>
                 </tree>
             </field>
         </record>
@@ -20,9 +20,31 @@
                 <form string="Grades">
                     <sheet>
                         <group>
-                            <field name="name"/>
-                            <field name="parallel_id"/>
-                            <field name="cycle_id"/>
+                            <group>
+                                <field name="name"/>
+                                <field name="cycle_id"/>
+                                <field name="parallel_id"/>
+                            </group>
+                            <!-- <notebook>
+                                <page string="Cursos Paralelos">
+                                    <field name="parallel_grade_ids">
+                                        <tree string="Cursos Paralelos">
+                                            <field name="name"/>
+                                            <field name="cycle_id"/>
+                                            <field name="parallel_id"/>
+                                        </tree>
+                                        <form string="Curso Paralelo">
+                                            <sheet>
+                                                <group>
+                                                    <field name="name"/>
+                                                    <field name="cycle_id"/>
+                                                    <field name="parallel_id"/>
+                                                </group>
+                                            </sheet>
+                                        </form>
+                                    </field>
+                                </page>
+                            </notebook> -->
                         </group>
                     </sheet>
                 </form>
