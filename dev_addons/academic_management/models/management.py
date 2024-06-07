@@ -26,27 +26,29 @@ class Management(models.Model):
         return result
 
     def action_in_progress(self):
-        for record in self:
-            if record.state == 'done':
-                raise UserError('No se puede cambiar de Finalizado a En Curso.')
-            record.state = 'in_progress'
+        self.state = 'in_progress'
+        #for record in self:
+         #   if record.state == 'done':
+          #      raise UserError('No se puede cambiar de Finalizado a En Curso.')
+           # record.state = 'in_progress'
     
     def action_done(self):
         self.state = 'done'
 
 
     def action_draft(self):
-        for record in self:
-            if record.state == 'done':
-                raise UserError('No se puede pasar a Borrador si el estado es Finalizado.')
-            record.state = 'draft'
+        self.state = 'draft'
+        #for record in self:
+          #  if record.state == 'done':
+         #       raise UserError('No se puede pasar a Borrador si el estado es Finalizado.')
+        #    record.state = 'draft'
     #si es finalizado que no se pueda editar
    
-    def write(self, vals):
-        for record in self:
-            if record.state == 'done':
-                raise UserError('No se puede editar una gestion finalizada.')
-        return super(Management, self).write(vals)
+    #def write(self, vals):
+    #    for record in self:
+     #       if record.state == 'done':
+      #          raise UserError('No se puede editar una gestion finalizada.')
+       # return super(Management, self).write(vals)
 
     
 
