@@ -7,3 +7,6 @@ class Subject(models.Model):
     name = fields.Char(string="Nombre", required=True)
     initials = fields.Char(string="Sigla", required=True)
     description = fields.Char(string="Descripcion", required=False)
+
+    #Relacion con la tabla mark
+    mark_ids = fields.One2many('mark', 'subject_id', string='Nota')

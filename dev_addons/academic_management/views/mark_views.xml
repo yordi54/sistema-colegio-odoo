@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="academic_management_mark_tree" model="ir.ui.view">
+            <field name="name">mark.tree</field>
+            <field name="model">mark</field>
+            <field name="arch" type="xml">
+                <tree string="Marks">
+                    <field name="report_card_id"/>
+                    <field name="subject_id"/>
+                    <field name="number"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="academic_management_mark_form" model="ir.ui.view">
+            <field name="name">mark.form</field>
+            <field name="model">mark</field>
+            <field name="arch" type="xml">
+                <form string="Marks">
+                    <sheet>
+                        <group>
+                            <field name="report_card_id"/>
+                            <field name="subject_id"/>
+                            <field name="number"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="academic_management.action_mark" model="ir.actions.act_window">
+            <field name="name">Nota</field>
+            <field name="res_model">mark</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+          
+    </data>
+</odoo>

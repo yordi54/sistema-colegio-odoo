@@ -7,3 +7,6 @@ access_cycle,access_cycle,model_cycle,base.group_user,1,1,1,1
 access_parallel,access_parallel,model_parallel,base.group_user,1,1,1,1
 access_subject,access_subject,model_subject,base.group_user,1,1,1,1
 access_grade,access_grade,model_grade,base.group_user,1,1,1,1
+access_grade_book,access_grade_book,model_grade_book,base.group_user,1,1,1,1
+access_report_card,access_report_card,model_report_card,base.group_user,1,1,1,1
+access_mark,access_mark,model_mark,base.group_user,1,1,1,1

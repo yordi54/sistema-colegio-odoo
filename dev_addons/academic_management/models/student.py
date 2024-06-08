@@ -4,7 +4,6 @@ class Student(models.Model):
     _name = "student"
     _description = "Alumno de la escuela"
 
-
     name = fields.Char(string="Nombre", required=True)
     lastname = fields.Char(string="Apellidos", required=True)
     ci = fields.Char(string="Cedula de identidad", required=True)
@@ -20,10 +19,21 @@ class Student(models.Model):
     # Relacion con la tabla de cursos
     user_id = fields.Many2one('res.users', string="Usuario", required=True)
 
+    #Relacion con la tabla report.card
+    report_card_ids = fields.One2many('report.card', 'student_id', string='Boletin')
 
-
+    #Relacion con la tabla grade.book
+    grade_book_ids = fields.One2many('grade.book', 'student_id', string='Libreta')
     
-   
+    # Campo computado para concatenar nombre y apellidos
+    @api.depends('name', 'lastname')
+    def _compute_display_name(self):
+        for student in self:
+            student.display_name = f"{student.name} {student.lastname}"
+
+    display_name = fields.Char(string="Nombre Completo", compute='_compute_display_name')
+
+    _rec_name = 'display_name'
     
 
 
