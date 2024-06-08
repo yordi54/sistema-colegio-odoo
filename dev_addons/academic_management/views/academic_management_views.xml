@@ -53,6 +53,19 @@
 |            <menuitem name="Periodo" id="academic_management.periods"
                 parent="academic_management.management_management"
                 action="academic_management.action_periods" />
+
+        <menuitem name="Gestión de Notas" id="academic_management.mark_management"
+            parent="academic_management.menu_root" />
+            <menuitem name="Nota" id="academic_management.mark"
+                parent="academic_management.mark_management"
+                action="academic_management.action_mark" />
+            <menuitem name="Boletin" id="academic_management.report_card"
+                parent="academic_management.mark_management"
+                action="academic_management.action_report_card" /> 
+            <menuitem name="Libreta" id="academic_management.grade_book"
+                parent="academic_management.mark_management"
+                action="academic_management.action_grade_book" />
+        
                 
     </data>
 </odoo>

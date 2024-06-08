@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="academic_management_grade_book_tree" model="ir.ui.view">
+            <field name="name">grade_book.tree</field>
+            <field name="model">grade.book</field>
+            <field name="arch" type="xml">
+                <tree string="Grade_Books">
+                    <field name="code"/>
+                    <field name="student_id"/>
+                    <field name="management_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="academic_management_grade_book_form" model="ir.ui.view">
+            <field name="name">grade_book.form</field>
+            <field name="model">grade.book</field>
+            <field name="arch" type="xml">
+                <form string="Grade_Books">
+                    <sheet>
+                        <group>
+                            <!-- <field name="code" readonly="true" /> -->
+                            <field name="student_id"/>
+                            <field name="management_id"/>
+                        </group>
+                        <notebook>
+                            <page string = "Boletines" name="report_card">
+                                <field name="report_card_ids"></field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="academic_management.action_grade_book" model="ir.actions.act_window">
+            <field name="name">Libreta</field>
+            <field name="res_model">grade.book</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+          
+    </data>
+</odoo>
