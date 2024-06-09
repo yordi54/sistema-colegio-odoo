@@ -61,3 +61,7 @@ class Period(models.Model):
       #      if record.state == 'done':
        #         raise UserError('No se puede editar un periodo finalizada.')
        # return super(Period, self).write(vals)
+
+
+    #Relacion con la tabla report.card
+    report_card_ids = fields.One2many('report.card', 'period_id', string='Boletin')

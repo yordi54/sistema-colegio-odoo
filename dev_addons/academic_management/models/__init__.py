@@ -23,3 +23,7 @@ from . import schedule
 from . import attendance
 from . import register_attendance
 
+from . import grade_book
+from . import mark
+from . import report_card
+from . import announcement

@@ -56,6 +56,8 @@ class Management(models.Model):
         
         
 
+    #Relacion con la tabla grade.book
+    grade_book_ids = fields.One2many('grade.book', 'management_id', string='Libreta')
 
 
 

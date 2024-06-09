@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="academic_management_report_card_tree" model="ir.ui.view">
+            <field name="name">report_card.tree</field>
+            <field name="model">report.card</field>
+            <field name="arch" type="xml">
+                <tree string="Report_Cards">
+                    <field name="code"/>
+                    <field name="period_id"/>
+                    <field name="student_id"/>
+                    <field name="grade_book_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="academic_management_report_card_form" model="ir.ui.view">
+            <field name="name">report_card.form</field>
+            <field name="model">report.card</field>
+            <field name="arch" type="xml">
+                <form string="Report_Cards">
+                    <sheet>
+                        <group>
+                            <!-- <field name="code" readonly="true" /> -->
+                            <field name="period_id"/>
+                            <field name="student_id"/>
+                            <!-- <field name="grade_book_id"/> -->
+                        </group>
+                        <notebook>
+                            <page string = "Notas" name="mark">
+                                <field name="mark_ids"></field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="academic_management.action_report_card" model="ir.actions.act_window">
+            <field name="name">Boletin</field>
+            <field name="res_model">report.card</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+          
+    </data>
+</odoo>

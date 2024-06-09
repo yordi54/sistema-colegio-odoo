@@ -10,3 +10,5 @@ class Subject(models.Model):
 
     schedule_ids = fields.One2many('schedule', 'subject_id', string='Horarios')
     
+    #Relacion con la tabla mark
+    mark_ids = fields.One2many('mark', 'subject_id', string='Nota')

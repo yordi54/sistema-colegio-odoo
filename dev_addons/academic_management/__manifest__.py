@@ -39,6 +39,10 @@
         'views/classroom_views.xml',
         'views/schedule_views.xml',
         'views/register_attendance_views.xml',
+        'views/grade_book_views.xml',
+        'views/mark_views.xml',
+        'views/report_card_views.xml',
+        'views/announcement_views.xml',
 
         'views/academic_management_views.xml',
         'data/ir_module_category_data.xml',
