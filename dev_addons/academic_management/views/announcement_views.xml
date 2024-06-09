@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="academic_management_announcement_tree" model="ir.ui.view">
+            <field name="name">announcement.tree</field>
+            <field name="model">announcement</field>
+            <field name="arch" type="xml">
+                <tree string="Announcements">
+                    <field name="reason"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="academic_management_announcement_form" model="ir.ui.view">
+            <field name="name">announcement.form</field>
+            <field name="model">announcement</field>
+            <field name="arch" type="xml">
+                <form string="Announcements">
+                    <sheet>
+                        <group>
+                            <field name="reason"/>
+                            <field name="description"/>
+                            <field name="state"/>
+                        </group>
+                        <notebook>
+                            <!-- invisible="[('state', '!=', 'grade')]" -->
+                            <page string="Cursos" invisible = "state!='grade'">
+                                <field name="grade_ids"/>
+                            </page>
+                            <page string="Ciclos" invisible = "state!='cycle'">
+                                <field name="cycle_ids"/>
+                            </page>
+                            <page string="Alumnos" invisible = "state!='student'">
+                                <field name="student_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="academic_management.action_announcement" model="ir.actions.act_window">
+            <field name="name">Comunicado</field>
+            <field name="res_model">announcement</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+          
+    </data>
+</odoo>

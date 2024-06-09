@@ -18,4 +18,4 @@ from . import grade
 from . import grade_book
 from . import mark
 from . import report_card
-
+from . import announcement
