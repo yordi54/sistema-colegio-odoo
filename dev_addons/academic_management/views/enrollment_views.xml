@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="academic_management_enrollment_tree" model="ir.ui.view">
+            <field name="name">enrollment.tree</field>
+            <field name="model">enrollment</field>
+            <field name="arch" type="xml">
+                <tree string="Enrollments">
+                    <field name="grade_id"/>
+                    <field name="period_id"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="academic_management_enrollment_form" model="ir.ui.view">
+            <field name="name">enrollment.form</field>
+            <field name="model">enrollment</field>
+            <field name="arch" type="xml">
+                <form string="Enrollments">
+                    <header>                    
+                        <button name="action_in_progress" type="object" string="Iniciar" modifiers="{'invisible': [('state', '!=', 'draft')]}"/>
+                        <button name="action_done" type="object" string="Finalizar" modifiers="{'invisible': [('state', '!=', 'in_progress')]}"/>
+                        <button name="action_draft" type="object" string="Reiniciar" modifiers="{'invisible': [('state', '!=', 'in_progress')]}"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,in_progress,done"/>
+            
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="grade_id"/>
+                                <field name="period_id"/>
+                                <field name="date_start"/>
+                                <field name="date_end"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Alumnos" name="student">
+                                <field name="student_ids">
+                                    <tree string="Students">
+                                        <field name="rude"/>
+                                        <field name="photo" widget="image" options='{"size": [50, 50]}' />
+                                        <field name="name"/>
+                                        <field name="lastname"/>
+                                        <field name="ci"/>
+                                        <field name="phone"/>
+                                        <field name="address"/>
+                                        <field name="state"/>
+                                    </tree>
+                                    <form string="Students">
+                                        <group>
+                                            <group>
+                                                <field name="rude"/>
+                                                <field name="photo" widget="image" options='{"size": [50, 50]}' />
+                                                <field name="name" />
+                                                <field name="lastname"/>
+                                                <field name="ci"/>
+                                                <field name="address"/>
+                                                <field name="phone"/>
+                                                <field name="state"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="academic_management_enrollment_action" model="ir.actions.act_window">
+            <field name="name">Inscripcion</field>
+            <field name="res_model">enrollment</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

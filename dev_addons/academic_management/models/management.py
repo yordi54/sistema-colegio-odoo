@@ -51,6 +51,11 @@ class Management(models.Model):
        # return super(Management, self).write(vals)
 
     
+    
+        
+        
+        
+
 
 
 

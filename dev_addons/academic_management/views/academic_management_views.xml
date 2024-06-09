@@ -24,6 +24,29 @@
             <menuitem name="Alumnos" id="academic_management.students"
                 parent="academic_management.student_management"
                 action="academic_management.action_student" />
+            <menuitem name="Tutores" id="academic_management.guardians"
+                parent="academic_management.student_management"
+                action="academic_management.action_guardian"/> 
+
+            <menuitem name="Gestion de Inscripciones" id="academic_management.enrollment_management"
+                parent="academic_management.student_management" 
+                action="academic_management_enrollment_action"/>
+
+            <menuitem name="Gestion de Licencias" id="academic_management.license_management"
+                parent="academic_management.student_management" 
+                action="academic_management.action_license_calendar"/>
+            <menuitem name="Gestion de Asistencias" id="academic_management.register_attendance_management"
+                parent="academic_management.student_management" 
+                action="academic_management.action_register_attendance_calendar"/>
+
+        <menuitem name="Aulas y Horario" id="academic_management.classroom_schedule_management"
+            parent="academic_management.menu_root"/>
+            <menuitem name="Aulas" id="academic_management.classroom_management"
+                parent="academic_management.classroom_schedule_management"
+                action="academic_management.classroom_action"/>
+            <menuitem name="Horarios" id="academic_management.schedule_management"
+                parent="academic_management.classroom_schedule_management"
+                action="academic_management.action_schedule"/>
 
         <menuitem name="Gestion de Ciclos y Paralelos" id="academic_management.cycle_parallel_management"
             parent="academic_management.menu_root" />

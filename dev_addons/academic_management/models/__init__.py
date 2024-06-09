@@ -15,4 +15,11 @@ from . import cycle
 from . import parallel
 from . import subject
 from . import grade
+from . import guardian
+from . import enrollment
+from . import license
+from . import classroom
+from . import schedule
+from . import attendance
+from . import register_attendance
 

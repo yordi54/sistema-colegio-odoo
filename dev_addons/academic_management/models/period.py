@@ -4,6 +4,7 @@ from odoo.exceptions import UserError
 class Period(models.Model):
     _name = 'period'
     _description = 'Periodo académico en un año académico'
+   
     
     number = fields.Char(string='Numero', required=True)
     description = fields.Text(string='Descripción')
@@ -21,6 +22,18 @@ class Period(models.Model):
     ], string='Estado', default='draft', required=True)
     management_id = fields.Many2one('management', string='Gestión', required=True)
 
+    name = fields.Char(string='Nombre del Periodo', compute='_compute_name', store=True)
+
+    #campo computado para el nombre del periodo academico en un año academico
+    @api.depends('number', 'management_id.year')
+    def _compute_name(self):
+        for record in self:
+            if record.management_id:
+                record.name = f"{record.number}-{record.management_id.year}"
+
+    _rec_name = 'name'
+
+    enrollment_ids = fields.One2many('enrollment', 'period_id', string='Inscripciones')
 
     #campos de solo lectura
     #year = fields.Char(related='management_id.year', string='Año Academico', readonly=True)

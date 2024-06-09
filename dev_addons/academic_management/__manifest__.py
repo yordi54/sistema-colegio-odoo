@@ -33,6 +33,12 @@
         'views/subject_views.xml',
         'views/management_views.xml',
         'views/period_views.xml',
+        'views/guardian_views.xml',
+        'views/enrollment_views.xml',
+        'views/license_views.xml',
+        'views/classroom_views.xml',
+        'views/schedule_views.xml',
+        'views/register_attendance_views.xml',
 
         'views/academic_management_views.xml',
         'data/ir_module_category_data.xml',

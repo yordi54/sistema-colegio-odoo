@@ -11,6 +11,20 @@ class Grade(models.Model):
     # Relacion con la tabla Cycle
     cycle_id = fields.Many2one('cycle', string="Ciclo", required=True)
 
+    # campo computado para concatenar el nombre del curso con el nombre del ciclo y el nombre del paralelo
+    @api.depends('name', 'cycle_id', 'parallel_id')
+    def _compute_full_name(self):
+        for record in self:
+            record.full_name = f"{record.name} - {record.cycle_id.name} - {record.parallel_id.name}"
+    
+    full_name = fields.Char(string="Nombre Completo", compute='_compute_full_name', store=True)
+    _rec_name = 'full_name'
+
+    enrollment_ids = fields.One2many('enrollment', 'grade_id', string='Inscripciones')
+    license_ids = fields.One2many('license', 'grade_id', string='Licencias')
+    schedule_ids = fields.One2many('schedule', 'grade_id', string='Horarios')
+    register_attendance_ids = fields.One2many('register.attendance', 'grade_id', string='Registro de asistencia')
+
     # # Campo computado para los cursos paralelos
     # parallel_grade_ids = fields.One2many('grade', string="Cursos Paralelos", compute="_compute_parallel_grades")
 
@@ -24,3 +38,11 @@ class Grade(models.Model):
     #             ])
     #         else:
     #             grade.parallel_grade_ids = self.env['grade'].browse([])
+
+    # lista de alumnos de un curso y añadir los datos de asistencia 
+ 
+    
+        
+
+
+

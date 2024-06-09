@@ -7,3 +7,6 @@ class Subject(models.Model):
     name = fields.Char(string="Nombre", required=True)
     initials = fields.Char(string="Sigla", required=True)
     description = fields.Char(string="Descripcion", required=False)
+
+    schedule_ids = fields.One2many('schedule', 'subject_id', string='Horarios')
+    
