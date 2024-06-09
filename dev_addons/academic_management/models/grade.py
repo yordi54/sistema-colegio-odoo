@@ -10,6 +10,9 @@ class Grade(models.Model):
     parallel_id = fields.Many2one('parallel', string="Paralelo", required=True)
     # Relacion con la tabla Cycle
     cycle_id = fields.Many2one('cycle', string="Ciclo", required=True)
+    # Relacion con la tabla announcement
+    announcement_ids = fields.Many2many('announcement', "announcement_grade_rel", "grade_id", "announcement_id", string="Comunicados")
+
 
     # # Campo computado para los cursos paralelos
     # parallel_grade_ids = fields.One2many('grade', string="Cursos Paralelos", compute="_compute_parallel_grades")

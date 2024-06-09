@@ -66,6 +66,11 @@
                 parent="academic_management.mark_management"
                 action="academic_management.action_grade_book" />
         
-                
+        <menuitem name="Gestion de Comunicados" id="academic_management.announcement_management"
+            parent="academic_management.menu_root" />
+            <menuitem name="Comunicados" id="academic_management.announcements"
+                parent="academic_management.announcement_management"
+                action="academic_management.action_announcement" />      
+    
     </data>
 </odoo>

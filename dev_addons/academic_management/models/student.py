@@ -24,6 +24,10 @@ class Student(models.Model):
 
     #Relacion con la tabla grade.book
     grade_book_ids = fields.One2many('grade.book', 'student_id', string='Libreta')
+
+    # Relacion con la tabla announcement
+    announcement_ids = fields.Many2many('announcement', "announcement_student_rel", "student_id", "announcement_id", string="Comunicados")
+
     
     # Campo computado para concatenar nombre y apellidos
     @api.depends('name', 'lastname')
