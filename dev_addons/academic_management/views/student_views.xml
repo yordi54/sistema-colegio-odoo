@@ -44,6 +44,58 @@
                             
                             </group>
                         </group>
+                        <notebook >
+                            <page string="Tutores" name="guardian">
+                                <field name="guardian_ids">
+                                    <tree string="Guardians">
+                                        <field name="name"/>
+                                        <field name="lastname"/>
+                                        <field name="ci"/>
+                                        <field name="phone"/>
+                                        <field name="address"/>
+                                    </tree>
+                                    <form string="Guardians">
+                                        <group>
+                                            <group>
+                                                <field name="name"/>
+                                                <field name="lastname"/>
+                                                <field name="ci"/>
+                                            </group>
+                                            <group>
+                                                <field name="email"/>
+                                                <field name="phone"/>
+                                                <field name="address"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                            <page string="Licencias" name="license">
+                                <field name="license_ids">
+                                    <tree string="Licenses">
+                                        <field name="name"/>
+                                        <field name="reason"/>
+                                        <field name="date_start"/>
+                                        <field name="date_end"/>
+                                        <field name="color" widget="color"/>
+                                    </tree>
+                                    <form string="Licenses">
+                                        <group>
+                                            <group>
+                                                <field name="name"/>
+                                                <field name="reason"/>
+                                                <field name="date_start"/>
+                                                <field name="date_end"/>
+                                                <field name="grade_id"/>
+                                            </group>
+                                            <group>
+                                                <field name="color" widget="color"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
                     
                     </sheet>
                 </form>

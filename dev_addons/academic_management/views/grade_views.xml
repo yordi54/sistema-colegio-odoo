@@ -25,26 +25,83 @@
                                 <field name="cycle_id"/>
                                 <field name="parallel_id"/>
                             </group>
-                            <!-- <notebook>
-                                <page string="Cursos Paralelos">
-                                    <field name="parallel_grade_ids">
-                                        <tree string="Cursos Paralelos">
-                                            <field name="name"/>
-                                            <field name="cycle_id"/>
-                                            <field name="parallel_id"/>
+                            <notebook>
+                                <page string="Horarios" name="schedule">
+                                    <field name="schedule_ids">
+                                        <tree string="Schedules">
+                                            <field name="start_time"/>
+                                            <field name="end_time"/>
+                                            <field name="day"/>
+                                            <field name="subject_id"/>
+                                            <field name="teacher_id"/>
+                                            <field name="classroom_id"/>
                                         </tree>
-                                        <form string="Curso Paralelo">
-                                            <sheet>
+                                        <form string="Schedules">
+                                            <group>
                                                 <group>
-                                                    <field name="name"/>
-                                                    <field name="cycle_id"/>
-                                                    <field name="parallel_id"/>
+                                                    <field name="start_time" widget="timepicker"/>
+                                                    <field name="end_time" widget="timepicker"/>
+                                                    <field name="day"/>
                                                 </group>
-                                            </sheet>
+                                                <group>
+                                                    <field name="subject_id"/>
+                                                    <field name="classroom_id"/>
+                                                    <field name="teacher_id"/>
+                                                </group>
+                                            </group>
                                         </form>
                                     </field>
                                 </page>
-                            </notebook> -->
+                               
+                                <page string="Inscritos">
+                                    <field name="enrollment_ids">
+                                        <tree string="Enrollments">
+                                            <field name="period_id"/>
+                                            <field name="date_start"/>
+                                            <field name="date_end"/>
+                                        </tree>
+                                        <form string="Enrollments">
+                                            <group>
+                                                <group>
+                                                    <field name="period_id"/>
+                                                    <field name="date_start"/>
+                                                    <field name="date_end"/>
+                                                </group>
+                                            </group>
+                                            <notebook>
+                                                <page string="Alumnos" name="student">
+                                                    <field name="student_ids">
+                                                        <tree string="Students">
+                                                            <field name="rude"/>
+                                                            <field name="photo" widget="image" options='{"size": [50, 50]}'/>
+                                                            <field name="name"/>
+                                                            <field name="lastname"/>
+                                                            <field name="ci"/>
+                                                            <field name="phone"/>
+                                                            <field name="address"/>
+                                                            <field name="state"/>
+                                                        </tree>
+                                                        <form string="Students">
+                                                            <group>
+                                                                <group>
+                                                                    <field name="rude"/>
+                                                                    <field name="photo" widget="image" options='{"size": [50, 50]}'/>
+                                                                    <field name="name"/>
+                                                                    <field name="lastname"/>
+                                                                    <field name="ci"/>
+                                                                    <field name="address"/>
+                                                                    <field name="phone"/>
+                                                                    <field name="state"/>
+                                                                </group>
+                                                            </group>
+                                                        </form>
+                                                    </field>
+                                                </page>
+                                            </notebook>
+                                        </form>
+                                    </field>
+                                </page>
+                            </notebook>
                         </group>
                     </sheet>
                 </form>

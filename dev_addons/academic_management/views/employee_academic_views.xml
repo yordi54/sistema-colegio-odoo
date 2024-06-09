@@ -14,6 +14,20 @@
                 <xpath expr="//field[@name='work_phone']" position="attributes">
                     <attribute name="column_invisible">1</attribute>
                 </xpath>
+                <xpath expr="//field[@name='activity_ids']" position="attributes">
+                    <attribute name="column_invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='work_email']" position="attributes">
+                    <attribute name="column_invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='activity_date_deadline']" position="attributes">
+                    <attribute name="column_invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='parent_id']" position="attributes">
+                    <attribute name="column_invisible">1</attribute>
+                </xpath>
+
+                
            
               
 

@@ -4,6 +4,7 @@ from odoo.exceptions import UserError
 class Period(models.Model):
     _name = 'period'
     _description = 'Periodo académico en un año académico'
+   
     
     number = fields.Char(string='Numero', required=True)
     description = fields.Text(string='Descripción')
@@ -31,6 +32,9 @@ class Period(models.Model):
                 record.name = f"{record.number}-{record.management_id.year}"
 
     _rec_name = 'name'
+
+    enrollment_ids = fields.One2many('enrollment', 'period_id', string='Inscripciones')
+
     #campos de solo lectura
     #year = fields.Char(related='management_id.year', string='Año Academico', readonly=True)
     def action_in_progress(self):

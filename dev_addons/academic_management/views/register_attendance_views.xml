@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- calenndar -->
+        <record id="academic_management_register_attendance_calendar_view" model="ir.ui.view">
+            <field name="name">register.attendance.calendar</field>
+            <field name="model">register.attendance</field>
+            <field name="arch" type="xml">
+                <calendar string="Registro" date_start="date" date_stop="date"  color="color">
+                    <field name="name"/>
+                    <field name="grade_id"/>
+                    <field name="date"/>
+                    <field name="color" widget="color"/>
+                </calendar>
+            </field>
+        </record>
+
+        <!-- form calendar -->
+        <record id="academic_management_register_attendance_form" model="ir.ui.view">
+            <field name="name">register.attendance.form</field>
+            <field name="model">register.attendance</field>
+            <field name="arch" type="xml">
+                <form string="Attendances">
+                    <header>
+                        <button name="generate_attendance_records" type="object" string="Generate Attendances" class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="date"/>
+                            </group>
+                            <group>
+                                
+                                <field name="grade_id"/>
+                                <field name="color" widget="color"/>
+
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Asistencias" name="attendance">
+                                <field name="attendance_ids">
+                                    <tree string="Asistencias">
+                                        <field name="student_id"/>
+                                        <field name="observation"/>
+                                        <field name="attended"/>
+                                        <field  name="leave"/>
+                                        <field name="missing"/>
+                                    </tree>
+                                    <form string="Asistencias">
+                                        <group>
+                                            <field name="student_id"/>
+                                            <field name="observation"/>
+                                            <field name="attended"/>
+                                            <field  name="leave"/>
+                                            <field name="missing"/>
+                                        </group>
+                                    </form>
+                                    
+                                </field>
+                            </page>
+                        </notebook>
+                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="academic_management.action_register_attendance_calendar" model="ir.actions.act_window">
+            <field name="name">Registro Asistencias</field>
+            <field name="res_model">register.attendance</field>
+            <field name="view_mode">calendar,form</field>
+        </record>
+    </data>
+</odoo>

@@ -18,6 +18,26 @@ class Student(models.Model):
 
     # Relacion con la tabla de cursos
     user_id = fields.Many2one('res.users', string="Usuario", required=True)
+    # Relacion con la tabla de guardian
+    guardian_ids = fields.Many2many('guardian', "student_guardian_rel", "student_id", "guardian_id", string="Tutores")
+    # Relacion con la tabla de inscripcion many many
+    enrollment_ids = fields.Many2many('enrollment', "student_enrollment_rel", "student_id", "enrollment_id", string="Inscripciones")
+
+    license_ids = fields.One2many('license', 'student_id', string='Licencias')
+    attendance_ids = fields.One2many('attendance', 'student_id', string='Registro de asistencia')
+    #attendance_ids = fields.One2many('attendance', 'student_id', string='Asistencias')
+    #faltas
+    #observaciones
+    #calificaciones
+
+    full_name = fields.Char(string="Nombre Completo", compute='_compute_full_name', store=True)
+    
+    @api.depends('name', 'lastname')
+    def _compute_full_name(self):
+        for record in self:
+            record.full_name = f"{record.name} {record.lastname}"
+
+    _rec_name = 'full_name'
 
     #Relacion con la tabla report.card
     report_card_ids = fields.One2many('report.card', 'student_id', string='Boletin')

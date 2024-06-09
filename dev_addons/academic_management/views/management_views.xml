@@ -41,7 +41,7 @@
                             </group>
                         </group>
                         <notebook>
-                            <page string="Periodos" name="period" >
+                            <page string="Periodos" name="period">
                                 <!-- campo period y no mostrar el campo gestion -->
                                 <field name="period_ids">
                                     <tree string="Periods"  >

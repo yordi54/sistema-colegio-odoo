@@ -50,6 +50,12 @@ class Management(models.Model):
       #          raise UserError('No se puede editar una gestion finalizada.')
        # return super(Management, self).write(vals)
 
+    
+    
+        
+        
+        
+
     #Relacion con la tabla grade.book
     grade_book_ids = fields.One2many('grade.book', 'management_id', string='Libreta')
 
