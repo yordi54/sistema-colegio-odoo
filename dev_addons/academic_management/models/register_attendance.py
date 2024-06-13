@@ -9,7 +9,18 @@ class RegisterAttendance(models.Model):
     attendance_ids = fields.One2many('attendance', 'register_attendance_id', string='Asistencia de alumnos')
     color = fields.Char(string='Color') 
 
-    #generar la asistencia de los alumnos en base al grade_id y que no se repita cuando genere un alumno    
+
+    #al crear generar la asistencia de los alumnos en base al grade_id
+    @api.model
+    def create(self, vals):
+        record = super(RegisterAttendance, self).create(vals)
+        record.generate_attendance_records()
+        return record
+    
+
+    
+
+    #generar la asistencia de los alumnos en base al grade_id y que no se repita cuando genere un alumno   
     def generate_attendance_records(self):
         for record in self:
             students = self.env['student']
