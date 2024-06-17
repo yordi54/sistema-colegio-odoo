@@ -11,7 +11,7 @@ class Guardian(models.Model):
     phone = fields.Char(string='Telefono', required=True)
     address = fields.Char(string='Direccion', required=True)
     student_ids = fields.Many2many('student', 'student_guardian_rel', 'guardian_id', 'student_id', string='Alumnos')
-    user_id = fields.Many2one('res.users', string='Usuario', required=True)
+    user_id = fields.Many2one('res.users', string='Usuario', required=False)
 
 
 

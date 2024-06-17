@@ -27,7 +27,6 @@
                                 <field name="name"/>
                                 <field name="lastname"/>
                                 <field name="ci"/>
-                                <field name = "user_id"/>
                             </group>
                             <group>
                                 <field name="email"/>
