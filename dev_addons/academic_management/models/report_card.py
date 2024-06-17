@@ -32,22 +32,42 @@ class ReportCard(models.Model):
 
     @api.model
     def create(self, vals):
-        # Crear el registro de la libreta
+    # Crear el registro de la libreta
         if 'student_id' in vals:
-            # Obtener el nombre completo del grado del estudiante
-            grade_name = self.env['grade'].search([('id', '=', self.student_id.grade_actual)], limit=1)
-            vals['grade_name'] = grade_name.full_name
-            vals['code'] = f"{self.student_id.rude}{self.period_id.name}"
+        # Obtener el nombre completo del grado del estudiante
+            student = self.env['student'].browse(vals['student_id'])
+            if student.grade_actual:
+                grade = self.env['grade'].search([('id', '=', student.grade_actual)], limit=1)
+                if grade:
+                    vals['grade_name'] = grade.full_name
 
-        return super(ReportCard, self).write(vals)
+                # Obtener el número del periodo
+            if 'period_id' in vals:
+                period = self.env['period'].browse(vals['period_id'])
+                if period:
+                    vals['code'] = f"{student.rude}{period.name}"
+
+        return super(ReportCard, self).create(vals)
+    
     
     @api.model
     def write(self, vals):
+        for record in self:
         # Verificar si se ha modificado el estudiante
-        if 'student_id' in vals:
+            if 'student_id' in vals:
             # Obtener el nombre completo del grado del estudiante
-            grade_name = self.env['grade'].search([('id', '=', self.student_id.grade_actual)], limit=1)
-            vals['grade_name'] = grade_name.full_name
+                student = self.env['student'].browse(vals['student_id'])
+                if student.grade_actual:
+                    grade = self.env['grade'].search([('id', '=', student.grade_actual)], limit=1)
+                    if grade:
+                        vals['grade_name'] = grade.full_name
+
+        # Verificar si se ha modificado el periodo
+            if 'period_id' in vals:
+                period = self.env['period'].browse(vals['period_id'])
+                if period:
+                    vals['code'] = f"{record.student_id.rude}{period.name}"
 
         return super(ReportCard, self).write(vals)
+
     _rec_name = 'code'

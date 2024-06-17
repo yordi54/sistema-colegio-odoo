@@ -24,7 +24,12 @@ class GradeBook(models.Model):
             #buscar el curso en el que esta inscrito el estudiante y mostrar su nombre
             grade_name = self.env['grade'].search([('id', '=', self.student_id.grade_actual)], limit=1)
             self.grade_name = grade_name.full_name """
-
+    @api.onchange('student_id')
+    def _onchange_student_id(self):
+        if self.student_id:
+            #buscar el curso en el que esta inscrito el estudiante y mostrar su nombre
+            grade_name = self.env['grade'].search([('id', '=', self.student_id.grade_actual)], limit=1)
+            self.grade_name = grade_name.full_name
     #cargar boletines de un estudiante
     
     def action_load_report_cards(self):
@@ -44,22 +49,39 @@ class GradeBook(models.Model):
     def create(self, vals):
         # Crear el registro de la libreta
         if 'student_id' in vals:
+            # Obtener el estudiante
+            student = self.env['student'].browse(vals['student_id'])
+            if student.grade_actual:
             # Obtener el nombre completo del grado del estudiante
-            grade_name = self.env['grade'].search([('id', '=', self.student_id.grade_actual)], limit=1)
-            vals['grade_name'] = grade_name.full_name
-            vals['code'] = f"{self.student_id.rude}{self.management_id.year}"
+                grade = self.env['grade'].search([('id', '=', student.grade_actual)], limit=1)
+                if grade:
+                    vals['grade_name'] = grade.full_name
 
-        return super(GradeBook, self).write(vals)
+            # Obtener el número de gestión del periodo
+            if 'management_id' in vals:
+                management = self.env['management'].browse(vals['management_id'])
+                vals['code'] = f"{student.rude}{management.year}"
+
+        return super(GradeBook, self).create(vals)
+
 
     
     @api.model
     def write(self, vals):
-        # Verificar si se ha modificado el estudiante
+        # Crear el registro de la libreta
         if 'student_id' in vals:
+            # Obtener el estudiante
+            student = self.env['student'].browse(vals['student_id'])
+            if student.grade_actual:
             # Obtener el nombre completo del grado del estudiante
-            grade_name = self.env['grade'].search([('id', '=', self.student_id.grade_actual)], limit=1)
-            vals['grade_name'] = grade_name.full_name
-            vals['code'] = f"{self.student_id.rude}{self.management_id.year}"
+                grade = self.env['grade'].search([('id', '=', student.grade_actual)], limit=1)
+                if grade:
+                    vals['grade_name'] = grade.full_name
+
+            # Obtener el número de gestión del periodo
+            if 'management_id' in vals:
+                management = self.env['management'].browse(vals['management_id'])
+                vals['code'] = f"{student.rude}{management.year}"
 
         return super(GradeBook, self).write(vals)
 
