@@ -10,7 +10,6 @@
                     <field name="name"/>
                     <field name="reason"/>
                     <field name="student_id"/>
-                    <field name="grade_id"/>
                     <field name="date_start"/>
                     <field name="date_end"/>
                     <field name="color" widget="color"/>
@@ -30,7 +29,6 @@
                                 <field name="name"/>
                                 <field name="reason"/>
                                 <field name="student_id"/>
-                                <field name="grade_id"/>
                             </group>
                             <group>
                                 <field name="date_start"/>

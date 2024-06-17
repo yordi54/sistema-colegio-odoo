@@ -8,7 +8,7 @@ class License(models.Model):
     date_start = fields.Date(string='Fecha de inicio', required=True)
     date_end = fields.Date(string='Fecha de fin', required=True)
     reason = fields.Text(string='Motivo', required=True)
-    grade_id = fields.Many2one('grade', string='Curso', required=True)
+    #grade_id = fields.Many2one('grade', string='Curso', required=True)
     student_id = fields.Many2one('student', string='Alumno', required=True)
     color = fields.Char(string='Color') 
    

@@ -21,9 +21,9 @@
                     <sheet>
                         <group>
                             <group>
-                                <field name="name"/>
-                                <field name="cycle_id"/>
-                                <field name="parallel_id"/>
+                                <field name="name" />
+                                <field name="cycle_id" options="{'no_create': True, 'no_open': True}"/>
+                                <field name="parallel_id" options="{'no_create': True, 'no_open': True}"/>
                             </group>
                             <notebook>
                                 <page string="Horarios" name="schedule">
@@ -44,9 +44,9 @@
                                                     <field name="day"/>
                                                 </group>
                                                 <group>
-                                                    <field name="subject_id"/>
-                                                    <field name="classroom_id"/>
-                                                    <field name="teacher_id"/>
+                                                    <field name="subject_id" options="{'no_create': True, 'no_open': True}"/>
+                                                    <field name="classroom_id" options="{'no_create': True, 'no_open': True}"/>
+                                                    <field name="teacher_id" options="{'no_create': True, 'no_open': True}"/>
                                                 </group>
                                             </group>
                                         </form>
@@ -54,18 +54,18 @@
                                 </page>
                                
                                 <page string="Inscritos">
-                                    <field name="enrollment_ids">
+                                    <field name="enrollment_ids" readonly="True">
                                         <tree string="Enrollments">
-                                            <field name="period_id"/>
-                                            <field name="date_start"/>
-                                            <field name="date_end"/>
+                                            <field name="period_id" />
+                                            <field name="date_start" />
+                                            <field name="date_end" />
                                         </tree>
                                         <form string="Enrollments">
                                             <group>
                                                 <group>
-                                                    <field name="period_id"/>
-                                                    <field name="date_start"/>
-                                                    <field name="date_end"/>
+                                                    <field name="period_id" />
+                                                    <field name="date_start" />
+                                                    <field name="date_end" />
                                                 </group>
                                             </group>
                                             <notebook>

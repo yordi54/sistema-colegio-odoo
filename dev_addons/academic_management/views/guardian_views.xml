@@ -65,7 +65,6 @@
                                                 <field name="email"/>
                                                 <field name="gender"/>
                                                 <field name="state"/>
-                                                <field name="user_id"/>
                                             
                                             </group>
                                         </group>

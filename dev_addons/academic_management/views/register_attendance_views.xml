@@ -21,6 +21,9 @@
             <field name="model">register.attendance</field>
             <field name="arch" type="xml">
                 <form string="Attendances">
+                    <header >
+                        <button name="generate_attendance_records" string="Generar Lista de Asistencias" type="object" />
+                    </header>
                     
                     <sheet>
                         <group>
