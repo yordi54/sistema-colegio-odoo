@@ -21,14 +21,26 @@
                 <form string="Report_Cards">
                     <sheet>
                         <group>
-                            <!-- <field name="code" readonly="true" /> -->
-                            <field name="period_id"/>
-                            <field name="student_id"/>
+                            <field name="code" readonly="True" />
+                            <field name="period_id" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="student_id" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="grade_name" readonly="True"/>
                             <!-- <field name="grade_book_id"/> -->
                         </group>
                         <notebook>
                             <page string = "Notas" name="mark">
-                                <field name="mark_ids"></field>
+                                <field name="mark_ids">
+                                    <tree string="Marks">
+                                        <field name="subject_id"/>
+                                        <field name="number"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="subject_id" options="{'no_create': True, 'no_open': True}"/>
+                                            <field name="number"/>
+                                        </group>
+                                    </form>
+                                </field>
                             </page>
                         </notebook>
                     </sheet>

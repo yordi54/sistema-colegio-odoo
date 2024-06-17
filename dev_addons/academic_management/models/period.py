@@ -38,22 +38,30 @@ class Period(models.Model):
     #campos de solo lectura
     #year = fields.Char(related='management_id.year', string='Año Academico', readonly=True)
     def action_in_progress(self):
-        self.state = 'in_progress'
+        for record in self:
+            if record.state == 'done':
+                raise UserError('El estado del Periodo es Finalizado. No se puede cambiar.')
+        
+        self.write({'state': 'in_progress'})
         #for record in self:
          #   if record.state == 'done':
           #      raise UserError('No se puede cambiar de Finalizado a En Curso.')
            # record.state = 'in_progress'
     
     def action_done(self):
-        self.state = 'done'
+        for record in self:
+            if record.state == 'draft':
+                raise UserError('No se puede cambiar de Borrador a Finalizado.')
+        self.write({'state': 'done'})
+  
 
 
     def action_draft(self):
-        self.state = 'draft'
-        #for record in self:
-         #   if record.state == 'done':
-          #      raise UserError('No se puede pasar a Borrador si el estado es Finalizado.')
-           # record.state = 'draft'
+        #se puede pasar de en curso a borrador y de en curso a finalizado
+        for record in self:
+            if record.state == 'done':
+                raise UserError('El estado del Periodo es Finalizado. No se puede cambiar.')
+        self.write({'state': 'draft'})
 
 
     #def write(self, vals):

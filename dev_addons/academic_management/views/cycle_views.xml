@@ -6,7 +6,7 @@
             <field name="model">cycle</field>
             <field name="arch" type="xml">
                 <tree string="Cycles">
-                    <field name="name"/>
+                    <field name="name" />
                     <field name="description"/>
                     <field name="duration"/>
                     <field name="state"/>
@@ -22,15 +22,27 @@
                 <form string="Cycles">
                     <sheet>
                         <group>
-                            <field name="name"/>
-                            <field name="description"/>
-                            <field name="duration"/>
-                            <field name="state"/>
-                            <field name="company_id"/>
+                            <field name="name" readonly="state == 'inactivo'"/>
+                            <field name="description" readonly="state == 'inactivo'"/>
+                            <field name="duration" readonly="state == 'inactivo'"/>
+                            <field name="state"  />
+                            <field name="company_id" readonly="state == 'inactivo'"/>
                         </group>
                         <notebook>
                             <page string = "Cursos" name="grade">
-                                <field name="grade_ids"></field>
+                                <field name="grade_ids" readonly="state == 'inactivo'">
+                                    <tree string="Grades">
+                                        <field name="name"/>
+                                        <field name="cycle_id"/>
+                                        <field name="parallel_id"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="name"/>
+                                            <field name="parallel_id" options="{'no_create': True, 'no_open': True}"/>
+                                        </group>
+                                    </form>
+                                </field>
                             </page>
                         </notebook>
                     </sheet>

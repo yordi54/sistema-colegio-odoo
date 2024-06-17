@@ -9,7 +9,7 @@
                     <field name="year"/>
                     <field name="date_start"/>
                     <field name="date_end"/>
-                    <field name="state"/>
+                    <field name="state" widget="badge"/>
                 </tree>
             </field>
         </record>
@@ -31,35 +31,34 @@
                     <sheet>
                         <group>
                             <group>
-                                <field name="year"  />
-                                <field name="description" />
+                                <field name="year" readonly="state == 'done'"/>
+                                <field name="description" readonly="state == 'done'"/>
                             </group>
                             <group>
-                                <field name="date_start" />
-                                <field name="date_end"  />
+                                <field name="date_start" readonly="state == 'done'"/>
+                                <field name="date_end" readonly="state == 'done'"/>
 
                             </group>
                         </group>
                         <notebook>
-                            <page string="Periodos" name="period">
+                            <page string="Periodos" name="period" >
                                 <!-- campo period y no mostrar el campo gestion -->
-                                <field name="period_ids">
+                                <field name="period_ids" readonly="state == 'done'">
                                     <tree string="Periods"  >
                                         <field name="number" />
                                         <field name="type_period" />
                                         <field name="date_start" />
                                         <field name="date_end" />
-                                        <field name="state" widget="badge" 
-                                            options='{"draft": {"class": "badge-blue"}, "in_progress": { "class": "badge-blue"}, "done" : {"class":"badge-blue" }}'/>
+                                        <field name="state" widget="badge" />
                                             
                                     </tree>
-                                    <form >
-                                        <group>
+                                    <form  >
+                                        <group >
                                             <group>
                                                 <field name="number" />
-                                                <field name="type_period"/>
-                                                <field name="date_start"/>
-                                                <field name="date_end"/>
+                                                <field name="type_period" />
+                                                <field name="date_start" />
+                                                <field name="date_end" />
                                             </group>
                                         </group>
                                     </form>

@@ -17,16 +17,53 @@
             <field name="name">grade_book.form</field>
             <field name="model">grade.book</field>
             <field name="arch" type="xml">
+                
                 <form string="Grade_Books">
+                    <header>
+                        <button name="action_load_report_cards" string="Cargar Boletines" type="object"/>
+                    </header>
                     <sheet>
                         <group>
-                            <!-- <field name="code" readonly="true" /> -->
-                            <field name="student_id"/>
-                            <field name="management_id"/>
+                            <group>
+                                <field name="code" readonly="True" />
+                                <field name="management_id" options="{'no_create': True, 'no_open': True}"/>
+                            </group>
+                            <group>
+                                <field name="student_id" options="{'no_create': True, 'no_open': True}"/>
+                                <field name="grade_name" options="{'no_create': True, 'no_open': True}"/>
+
+                            </group>
+
                         </group>
                         <notebook>
                             <page string = "Boletines" name="report_card">
-                                <field name="report_card_ids"></field>
+                                <field name="report_card_ids" readonly="True">
+                                    <tree string="Report_Cards">
+                                        
+                                        <field name="code"/>
+                                        <field name="period_id"/>
+                                        <field name="student_id"/>
+                                    </tree>
+                                    <form string="Report_Cards">
+                                        <group>
+                                            <group>
+                                                <field name="code"/>
+                                                <field name="student_id" />
+                                            </group>
+                                            <group>
+                                                <field name="period_id" />
+                                            </group>
+                                            <field name="mark_ids">
+                                                <tree string="Marks">
+                                                    <field name="subject_id"/>
+                                                    <field name="number"/>
+                                                </tree>
+                                                
+                                            </field>
+                                        </group>
+                                    </form>
+                                    
+                                </field>
                             </page>
                         </notebook>
                     </sheet>

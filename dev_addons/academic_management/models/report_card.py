@@ -18,20 +18,36 @@ class ReportCard(models.Model):
     # Relacion con la tabla grade.book
     grade_book_id = fields.Many2one('grade.book', string="Libreta", required=False)
 
+    grade_name = fields.Char(string="Curso", readonly=True)
+
+    #cuando selecciono un estudiante que me muestre el nombre de curso en el que esta inscrito
+    @api.onchange('student_id')
+    def _onchange_student_id(self):
+        if self.student_id:
+            #buscar el curso en el que esta inscrito el estudiante y mostrar su nombre
+            grade_name = self.env['grade'].search([('id', '=', self.student_id.grade_actual)], limit=1)
+            self.grade_name = grade_name.full_name
+
+            
+
     @api.model
     def create(self, vals):
-        # Buscar la libreta del estudiante
-        student_id = vals.get('student_id')
-        if student_id:
-            grade_book = self.env['grade.book'].search([('student_id', '=', student_id)], limit=1)
-            if grade_book:
-                vals['grade_book_id'] = grade_book.id
-        
-        # Crear el registro del boletín
-        record = super(ReportCard, self).create(vals)
-        
-        # Generar el código del boletín
-        record.code = f"{record.student_id.rude}{record.period_id.name}"
-        return record
+        # Crear el registro de la libreta
+        if 'student_id' in vals:
+            # Obtener el nombre completo del grado del estudiante
+            grade_name = self.env['grade'].search([('id', '=', self.student_id.grade_actual)], limit=1)
+            vals['grade_name'] = grade_name.full_name
+            vals['code'] = f"{self.student_id.rude}{self.period_id.name}"
 
+        return super(ReportCard, self).write(vals)
+    
+    @api.model
+    def write(self, vals):
+        # Verificar si se ha modificado el estudiante
+        if 'student_id' in vals:
+            # Obtener el nombre completo del grado del estudiante
+            grade_name = self.env['grade'].search([('id', '=', self.student_id.grade_actual)], limit=1)
+            vals['grade_name'] = grade_name.full_name
+
+        return super(ReportCard, self).write(vals)
     _rec_name = 'code'

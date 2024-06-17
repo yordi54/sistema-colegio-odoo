@@ -10,14 +10,17 @@ class Student(models.Model):
     birthdate = fields.Date(string="Fecha de nacimiento", required=True)
     rude = fields.Char(string="Codigo RUDE", required=True)
     state = fields.Selection([ ('activo', 'Activo'), ('inactivo', 'Inactivo')], string="Estado", required=True, default='activo')
-    phone = fields.Char(string="Telefono", required=True)
-    email = fields.Char(string="Correo electronico", required=False, unique=True)
+    phone = fields.Char(string="Telefono", required=False)
+    email = fields.Char(string="Correo electronico", required=False)
     address = fields.Char(string="Direccion", required=True)
     gender = fields.Selection([('masculino', 'Masculino'), ('femenino', 'Femenino')], string="Genero", required=True)
     photo = fields.Binary(string="Foto")
+    grade_actual = fields.Integer(string="Grado actual", required=False)
+    cycle_actual = fields.Integer(string="Ciclo actual", required=False)
+    parallel_actual = fields.Integer(string="Paralelo actual", required=False)
 
     # Relacion con la tabla de cursos
-    user_id = fields.Many2one('res.users', string="Usuario", required=True)
+    user_id = fields.Many2one('res.users', string="Usuario", required=False)
     # Relacion con la tabla de guardian
     guardian_ids = fields.Many2many('guardian', "student_guardian_rel", "student_id", "guardian_id", string="Tutores")
     # Relacion con la tabla de inscripcion many many
@@ -39,6 +42,7 @@ class Student(models.Model):
 
     _rec_name = 'full_name'
 
+
     #Relacion con la tabla report.card
     report_card_ids = fields.One2many('report.card', 'student_id', string='Boletin')
 
@@ -58,6 +62,20 @@ class Student(models.Model):
     display_name = fields.Char(string="Nombre Completo", compute='_compute_display_name')
 
     _rec_name = 'display_name'
+
+    #create student and create user
+    @api.model
+    def create(self, vals):
+        # Crear el usuario
+        user_vals = {
+            'name': f"{vals['name']} {vals['lastname']}",
+            'login': vals['email'],
+            'email': vals['email']
+        }
+        user = self.env['res.users'].create(user_vals)
+        vals['user_id'] = user.id
+
+        return super(Student, self).create(vals)
     
 
 

@@ -11,11 +11,7 @@ class RegisterAttendance(models.Model):
 
 
     #al crear generar la asistencia de los alumnos en base al grade_id
-    @api.model
-    def create(self, vals):
-        record = super(RegisterAttendance, self).create(vals)
-        record.generate_attendance_records()
-        return record
+   
     
 
     
@@ -42,7 +38,6 @@ class RegisterAttendance(models.Model):
                     'leave': False,
                     'missing': False,
                 })
-        return True
     
     
 
