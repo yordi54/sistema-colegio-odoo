@@ -1,4 +1,24 @@
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import messaging
 from odoo import models, fields, api
+
+
+def initialize_firebase():
+    cred = credentials.Certificate('/mnt/extra-addons/academic_management/static/firebase.json')
+    firebase_admin.initialize_app(cred)
+
+initialize_firebase()
+
+def send_message_to_device(token, title, body):
+    
+    message = messaging.Message(
+        notification=messaging.Notification(title=title, body=body),
+        token=token,
+    )
+    messaging.send(message)
+
+
 
 class Announcement(models.Model):
     _name = "announcement"
@@ -6,25 +26,13 @@ class Announcement(models.Model):
 
     reason = fields.Char(string="Motivo", required=True)
     description = fields.Char(string="Descripcion", required=True)
-    # Campo de selección para definir el tipo de destinatario del comunicado
-    state = fields.Selection([
-        ('cycle', 'Ciclo'),
-        ('student', 'Alumno'),
-        ('grade', 'Curso')
-    ], string="Selección", required=True)
+ 
 
-    # Relacion con la tabla student
-    student_ids = fields.Many2many('student', string='Alumno', required=False)
-    # Relacion con la tabla grade
-    grade_ids = fields.Many2many('grade', string='Curso', required=False)
-    # Relacion con la tabla cycle
-    cycle_ids = fields.Many2many('cycle', string='Ciclo', required=False)
+    @api.model
+    def create(self, vals):
+        #enviar mensaje notificacion
+        record = super(Announcement, self).create(vals)
+        send_message_to_device("d8SrTu8cTrumyxqX4D0T9X:APA91bFoDgMpHkuIRcUhAxwxVfk6Q1tu90cptUnHA94DfsizyzUhIPYrYvHeAJBXpKo7rdOt03P4bsweXXeg5TP6httZbL5C3KLGtNL1rbFhPaZZb3D5oE-g-HHqOTZ3yORvIqtxWOF_", record.reason, record.description)
+        return record
 
-    @api.onchange('state')
-    def _onchange_state(self):
-        if self.state != 'student':
-            self.student_ids = [(5, 0, 0)]  # Elimina todas las selecciones de alumnos
-        if self.state != 'grade':
-            self.grade_ids = [(5, 0, 0)]  # Elimina todas las selecciones de cursos
-        if self.state != 'cycle':
-            self.cycle_ids = [(5, 0, 0)]  # Elimina todas las selecciones de ciclos
+

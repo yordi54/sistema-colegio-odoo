@@ -21,20 +21,8 @@
                         <group>
                             <field name="reason"/>
                             <field name="description"/>
-                            <field name="state"/>
                         </group>
-                        <notebook>
-                            <!-- invisible="[('state', '!=', 'grade')]" -->
-                            <page string="Cursos" invisible = "state!='grade'">
-                                <field name="grade_ids"/>
-                            </page>
-                            <page string="Ciclos" invisible = "state!='cycle'">
-                                <field name="cycle_ids"/>
-                            </page>
-                            <page string="Alumnos" invisible = "state!='student'">
-                                <field name="student_ids"/>
-                            </page>
-                        </notebook>
+                        
                     </sheet>
                 </form>
             </field>

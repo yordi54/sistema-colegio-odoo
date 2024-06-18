@@ -14,6 +14,6 @@ class Cycle(models.Model):
     # Relacion con la tabla grade
     grade_ids = fields.One2many('grade', 'cycle_id', string='Cursos')
     # Relacion con la tabla announcement
-    announcement_ids = fields.Many2many('announcement', "announcement_cycle_rel", "cycle_id", "announcement_id", string="Comunicados")
+    #announcement_ids = fields.Many2many('announcement', "announcement_cycle_rel", "cycle_id", "announcement_id", string="Comunicados")
 
     

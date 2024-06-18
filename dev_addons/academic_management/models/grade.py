@@ -11,7 +11,7 @@ class Grade(models.Model):
     # Relacion con la tabla Cycle
     cycle_id = fields.Many2one('cycle', string="Ciclo", required=True)
     # Relacion con la tabla announcement
-    announcement_ids = fields.Many2many('announcement', "announcement_grade_rel", "grade_id", "announcement_id", string="Comunicados")
+    #announcement_ids = fields.Many2many('announcement', "announcement_grade_rel", "grade_id", "announcement_id", string="Comunicados")
 
     # campo computado para concatenar el nombre del curso con el nombre del ciclo y el nombre del paralelo
     @api.depends('name', 'cycle_id', 'parallel_id')
